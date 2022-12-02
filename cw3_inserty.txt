@@ -1,0 +1,158 @@
+In [5]: Actor.objects.create(name='Keanu', surname='Reeves', birthdate='1964-09-02')
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Actor.birthdate received a naive datetime (1964-09-02 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[5]: <Actor: Keanu>
+
+In [6]: a = Actor.objects.all()
+
+In [7]: a
+Out[7]: <QuerySet [<Actor: Keanu>]>
+
+In [8]: a[0].name
+Out[8]: 'Keanu'
+
+In [9]: #działa
+
+In [10]: Actor.objects.create(name='Cezary', surname='Pazura', birthdate='1962-06-13')
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Actor.birthdate received a naive datetime (1962-06-13 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[10]: <Actor: Cezary>
+
+In [11]: Actor.objects.create(name='Bogusław', surname='Linda', birthdate='1952-06-27')
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Actor.birthdate received a naive datetime (1952-06-27 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[11]: <Actor: Bogusław>
+
+In [12]: Actor.objects.create(name='Laurence', surname='Fishburne', birthdate='1961-07-30')
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Actor.birthdate received a naive datetime (1961-07-30 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[12]: <Actor: Laurence>
+
+In [13]: Actor.objects.create(name='Leonardo', surname='DiCaprio', birthdate='1974-11-11')
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Actor.birthdate received a naive datetime (1974-11-11 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[13]: <Actor: Leonardo>
+
+In [14]: Actor.objects.create(name='Brad', surname='Pitt', birthdate='1963-12-18')
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Actor.birthdate received a naive datetime (1963-12-18 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[14]: <Actor: Brad>
+
+In [15]: Director.objects.create(name='Chad', surname='Stahelski', birthdate='1968-09-20')
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Director.birthdate received a naive datetime (1968-09-20 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[15]: <Director: Chad>
+
+In [16]: Director.objects.create(name='Lily', surname='Wachowski', birthdate='1967-12-29')
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Director.birthdate received a naive datetime (1967-12-29 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[16]: <Director: Lily>
+
+In [17]: Director.objects.create(name='Lana', surname='Wachowski', birthdate='1965-06-21')
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Director.birthdate received a naive datetime (1965-06-21 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[17]: <Director: Lana>
+
+In [18]: Director.objects.create(name='Quentin', surname='Tarantino', birthdate='1963-03-14')
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Director.birthdate received a naive datetime (1963-03-14 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[18]: <Director: Quentin>
+
+In [19]: Director.objects.create(name='Władysław', surname='Pasikowski', birthdate='1959-06-14')
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Director.birthdate received a naive datetime (1959-06-14 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[19]: <Director: Władysław>
+
+In [20]: User.objects.create(username='Antej_Semitic')
+Out[20]: <User: Antej_Semitic>
+
+In [21]: User.objects.create(username='StarWarsFan123')
+Out[21]: <User: StarWarsFan123>
+
+In [22]: User.objects.create(username='GrzegorzF')
+Out[22]: <User: GrzegorzF>
+
+In [26]: a = Actor.objects.all()
+
+In [27]: a
+Out[27]: <QuerySet [<Actor: Keanu>, <Actor: Cezary>, <Actor: Bogusław>, <Actor: Laurence>, <Actor: Leonardo>, <Actor: Brad>]>
+
+In [28]: d = Director.objects.all()
+
+In [29]: d
+Out[29]: <QuerySet [<Director: Chad>, <Director: Lily>, <Director: Lana>, <Director: Quentin>, <Director: Władysław>]>
+
+In [30]: u = User.objects.all()
+
+In [31]: u
+Out[31]: <QuerySet [<User: Antej_Semitic>, <User: StarWarsFan123>, <User: GrzegorzF>]>
+
+In [57]: Film.objects.create(title='John Wick', description='John Wick Description', release_date='2014-12-05', director=d[0])
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Film.release_date received a naive datetime (2014-12-05 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[57]: <Film: John Wick>
+
+In [59]: f = Film.objects.get(title='John Wick')
+
+In [62]: f.actors.add(a[0])
+
+In [63]: f.actors.add(a[1])
+
+In [64]: Film.objects.create(title='Matrix', description='Matrix Description', release_date='1999-08-13', director=d[1])
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Film.release_date received a naive datetime (1999-08-13 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[64]: <Film: Matrix>
+
+In [65]: f = Film.objects.get(title='Matrix')
+
+In [66]: f.actors.add(a[0])
+
+In [67]: f.actors.add(a[3])
+
+In [68]: Film.objects.create(title='Once Upon a Time in Hollywood', description='Once Upon a Time in Hollywood description', release_date='2019
+    ...: -07-26', director=d[3])
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Film.release_date received a naive datetime (2019-07-26 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[68]: <Film: Once Upon a Time in Hollywood>
+
+In [69]: f = Film.objects.get(title='Once Upon a Time in Hollywood')
+
+In [70]: f.actors.add(a[4])
+
+In [71]: f.actors.add(a[5])
+
+In [72]: Film.objects.create(title='Psy', description='Psy description', release_date='1992-11-20', director=d[4])
+D:\IT\Python\DjangoBazy\env\lib\site-packages\django\db\models\fields\__init__.py:1564: RuntimeWarning: DateTimeField Film.release_date received a naive datetime (1992-11-20 00:00:00) while time zone support is active.
+  warnings.warn(
+Out[72]: <Film: Psy>
+
+In [73]: f = Film.objects.get(title='Psy')
+
+In [74]: f.actors.add(a[1])
+
+In [75]: f.actors.add(a[2])
+
+In [76]: f = Film.objects.all()
+
+In [77]: f
+Out[77]: <QuerySet [<Film: John Wick>, <Film: Matrix>, <Film: Once Upon a Time in Hollywood>, <Film: Psy>]>
+
+In [78]: Entry.objects.create(title=f[0], user=u[0], rating=8)
+Out[78]: <Entry: Entry object (2)>
+
+In [79]: Entry.objects.create(title=f[0], user=u[1], rating=9)
+Out[79]: <Entry: Entry object (3)>
+
+In [80]: Entry.objects.create(title=f[1], user=u[0], rating=6)
+Out[80]: <Entry: Entry object (4)>
+
+In [81]: Entry.objects.create(title=f[2], user=u[1], rating=6)
+Out[81]: <Entry: Entry object (5)>
+
+In [82]: Entry.objects.create(title=f[3], user=u[2], rating=8)
+Out[82]: <Entry: Entry object (6)>
+
+In [5]: Entry.objects.all().order_by('rating').values()
+Out[5]: <QuerySet [{'id': 4, 'title_id': 9, 'user_id': 2, 'rating': 6.0}, {'id': 5, 'title_id': 10, 'user_id': 3, 'rating': 6.0}, {'id': 2, 'title_id': 8, 'user_id': 2, 'rating': 8.0}, {'id': 6, 'title_id': 11, 'user_id': 4, 'rating': 8.0}, {'id': 3, 'title_id': 8, 'user_id': 3, 'rating': 9.0}]>
+
+In [6]:

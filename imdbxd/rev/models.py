@@ -28,7 +28,7 @@ class Film(models.Model):
     title = models.CharField(max_length=150, null=True)
     description = models.CharField(max_length=1000, null=True)
     release_date = models.DateTimeField(null=True)
-    director = models.ForeignKey(Director, null=True,  on_delete=models.SET_NULL)
+    directors = models.ManyToManyField(Director)
     actors = models.ManyToManyField(Actor)
     slug = models.SlugField(max_length=150, null=True, editable=False)
 
