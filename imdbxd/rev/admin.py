@@ -14,10 +14,6 @@ class FilmAdmin(admin.ModelAdmin):
         return "\n".join(['{} {}'.format(a.name, a.surname) for a in obj.directors.all()])
 
 
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('username',)
-
-
 class EntryAdmin(admin.ModelAdmin):
     list_display = ('title', 'user', 'rating')
 
@@ -33,5 +29,4 @@ class DirectorAdmin(admin.ModelAdmin):
 admin.site.register(Actor, ActorAdmin)
 admin.site.register(Director, DirectorAdmin)
 admin.site.register(Film, FilmAdmin)
-admin.site.register(User, UserAdmin)
 admin.site.register(Entry, EntryAdmin)

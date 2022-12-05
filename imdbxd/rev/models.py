@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.dispatch import receiver
 from django.db.models import signals
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -36,17 +37,14 @@ class Film(models.Model):
         return self.title
 
 
-class User(models.Model):
-    username = models.CharField(max_length=30, null=True)
-
-    def __str__(self):
-        return self.username
-
-
 class Entry(models.Model):
     title = models.ForeignKey(Film, null=True, on_delete=models.SET_NULL)
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     rating = models.FloatField(null=True)
+
+    class Meta:
+        unique_together = (('user', 'title'),)
+        index_together = (('user', 'title'),)
 
 
 @receiver(signals.pre_save, sender=Film)
