@@ -5,13 +5,7 @@ from .models import *
 
 
 class FilmAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'release_date', 'get_actors', 'get_directors')
-
-    def get_actors(self, obj):
-        return "\n".join(['{} {}'.format(a.name, a.surname) for a in obj.actors.all()])
-
-    def get_directors(self, obj):
-        return "\n".join(['{} {}'.format(a.name, a.surname) for a in obj.directors.all()])
+    list_display = ('title', 'description', 'release_date')
 
 
 class EntryAdmin(admin.ModelAdmin):

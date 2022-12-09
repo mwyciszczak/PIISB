@@ -13,7 +13,7 @@ class Actor(models.Model):
     birthdate = models.DateTimeField(null=True)
 
     def __str__(self):
-        return self.name
+        return '{} {}'.format(self.name, self.surname)
 
 
 class Director(models.Model):
@@ -22,7 +22,7 @@ class Director(models.Model):
     birthdate = models.DateTimeField(null=True)
 
     def __str__(self):
-        return self.name
+        return '{} {}'.format(self.name, self.surname)
 
 
 class Film(models.Model):
