@@ -33,4 +33,5 @@ class UserSerializer(serializers.ModelSerializer):
     # działa aż za bardzo bo wysyła hash hasła XD
     class Meta:
         model = User
-        fields = ['id', 'username']
+        fields = ['id', 'username', 'password']
+        extra_kwargs = {'password': {'write_only': True, 'required': True}}
